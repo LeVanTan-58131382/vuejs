@@ -67,7 +67,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
     input,select {
   margin-left: 10px;
 }

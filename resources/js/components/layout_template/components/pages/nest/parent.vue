@@ -18,7 +18,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 .child-page {
   border: 2px solid #ddd;
   width: 500px;

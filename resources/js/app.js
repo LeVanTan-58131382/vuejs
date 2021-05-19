@@ -101,6 +101,18 @@ new Vue({
 })
 
 
+/// Sortable Table
+import SortableTable from './components/table/sortable_table/App.vue'
+
+Vue.config.productionTip = false
+
+new Vue({
+  el: '#app_sortable_table',
+  template: '<SortableTable/>',
+  components: { SortableTable }
+})
+
+
 /// Slot
 import AppSlot from './components/slot/App'
 
@@ -208,3 +220,94 @@ new Vue({
   components: { AppLoadingState },
   template: "<AppLoadingState/>"
 });
+
+/// Use Vuex with another example 2
+import AppVuex2 from "./components/truyen_du_lieu/vuex_2/App";
+import storeAppVuex2 from "./components/truyen_du_lieu/vuex_2/stores/store";
+
+Vue.config.productionTip = false;
+
+new Vue({
+  store: storeAppVuex2,
+  el: "#app_vuex_2",
+  components: { AppVuex2 },
+  template: "<AppVuex2/>"
+});
+
+
+/// Search
+import AppSearch from "./components/search/App.vue";
+
+Vue.config.productionTip = false;
+
+new Vue({
+  el: "#app_search",
+  components: { AppSearch },
+  template: "<AppSearch/>"
+});
+
+
+
+/// Fullpage scroll
+// https://codepen.io/WebDEasy/pen/NVOEBL
+
+// import AppFullpageScroll from "./components/page_scroll/App.vue";
+
+// Vue.config.productionTip = false;
+
+// new Vue({
+//   el: "#app_fullpage_scroll",
+//   components: { AppFullpageScroll },
+//   template: "<AppFullpageScroll/>"
+// });
+
+
+
+
+/// GAME: App Monster Game 
+import AppMonsterGame  from "./games/monster_game/App.vue";
+
+Vue.config.productionTip = false;
+
+new Vue({
+  el: "#app_monster_game",
+  components: { AppMonsterGame },
+  template: "<AppMonsterGame/>"
+});
+
+
+/// GAME: Guess the word
+import AppGuessTheWord  from "./games/guess_the_word/App.vue";
+import storeAppGuessTheWord  from "./games/guess_the_word/store/store";
+
+Vue.config.productionTip = false;
+
+new Vue({
+  store: storeAppGuessTheWord,
+  el: "#app_guess_the_word",
+  components: { AppGuessTheWord },
+  template: "<AppGuessTheWord/>"
+});
+
+
+/// GAME: Lemonade stand
+import AppLemonnadeStand from "./games/lemonade_stand/App.vue";
+
+import routerLemonnadeStand from "./games/lemonade_stand/routes";
+import storeLemonnadeStand from "./games/lemonade_stand/store";
+
+Vue.config.productionTip = false;
+
+Vue.filter("money", value => {
+  if (!window.Intl) return value;
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD"
+  }).format(value);
+});
+
+new Vue({
+  render: h => h(AppLemonnadeStand),
+  router: routerLemonnadeStand,
+  store: storeLemonnadeStand
+}).$mount("#app_lemonade_stand");

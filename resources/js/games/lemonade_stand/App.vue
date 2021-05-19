@@ -1,26 +1,20 @@
 <template>
-  <div id="app">
-    <ParentComponent/>
-  </div>
+  <router-view/>
 </template>
 
 <script>
-import ParentComponent from "./components/ParentComponent";
-
 export default {
-  name: "AppEventSample_1",
-  components: {
-    ParentComponent
-  }
+  name: "AppLemonnadeStand",
+  components: {}
 };
 </script>
 
-<style scoped>
+<style>
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: left;
+  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }

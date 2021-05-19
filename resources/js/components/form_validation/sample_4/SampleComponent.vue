@@ -2,7 +2,7 @@
     <div class="jumbotron">
         <div class="container">
             <div class="row">
-                <div class="col-sm-8 offset-sm-2">
+                <div class="col-sm-8 offset-sm-0">
                     <div>
                         <h2>Vue.js + Vuelidate - Form Validation</h2>
                         <form @submit.prevent="handleSubmit">
@@ -93,8 +93,10 @@ import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
     };
 </script>
 
-<style>
+<style scoped>
     input,select {
   margin-left: 10px;
+  width: 300px;
+  text-align: left;
 }
 </style>

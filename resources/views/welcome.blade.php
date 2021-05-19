@@ -96,6 +96,13 @@
                             </div>
                         </div>
 
+                        <div class="col-md-12 block-component">
+                            <label for="" class="control-label">Vuelidate</label>
+                            <div id="app_sortable_table">
+                                
+                            </div>
+                        </div>
+
                         <div class="col-md-5 block-component">
                             <label for="" class="control-label">Slot example</label>
                             <div id="app_slot">
@@ -144,6 +151,36 @@
                         <div class="col-md-12 block-component">
                             <label for="" class="control-label">Loading state for vue-axios requests ( with Vuex)</label>
                             <div id="app_loading_state">
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 block-component">
+                            <label for="" class="control-label">Change data user (with Vuex)</label>
+                            <div id="app_vuex_2">
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 block-component">
+                            <label for="" class="control-label">Search</label>
+                            <div id="app_search">
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 block-component">
+                            <label for="" class="control-label">Monster Game</label>
+                            <div id="app_monster_game">
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 block-component">
+                            <label for="" class="control-label">Guess the word</label>
+                            <div id="app_guess_the_word">
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 block-component" style="min-height: 500px">
+                            <label for="" class="control-label">Lemonade stand - Quầy nước chanh</label>
+                            <div id="app_lemonade_stand">
                             </div>
                         </div>
                     </div>

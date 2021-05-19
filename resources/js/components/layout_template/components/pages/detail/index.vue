@@ -30,7 +30,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .detail-item {
   cursor: pointer;
   line-height: 40px;
