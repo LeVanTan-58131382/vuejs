@@ -160,6 +160,12 @@
                             </div>
                         </div>
 
+                        <div class="col-md-12 block-component">
+                            <label for="" class="control-label">Todo app (with Vuex)</label>
+                            <div id="app_todo_vuex_3">
+                            </div>
+                        </div>
+
                         <div class="col-md-5 block-component">
                             <label for="" class="control-label">Search</label>
                             <div id="app_search">
@@ -181,6 +187,36 @@
                         <div class="col-md-12 block-component" style="min-height: 500px">
                             <label for="" class="control-label">Lemonade stand - Quầy nước chanh</label>
                             <div id="app_lemonade_stand">
+                            </div>
+                        </div>
+
+                        <div class="col-md-8 block-component" style="min-height: 500px">
+                            <label for="" class="control-label">App Weather</label>
+                            <div id="app_weather">
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-md-12 block-component" style="min-height: 500px">
+                            <label for="" class="control-label">App Show Modal</label>
+                            <div id="app_show_modal">
+                            </div>
+                        </div> -->
+
+                        <div class="col-md-12 block-component" style="min-height: 500px">
+                            <label for="" class="control-label">App Weather</label>
+                            <div id="app_memory_fruit">
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 block-component" style="min-height: 500px">
+                            <label for="" class="control-label">App Slider</label>
+                            <div id="app_auto_loan_calculator">
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 block-component" style="min-height: 500px">
+                            <label for="" class="control-label">App Animation</label>
+                            <div id="app_animation">
                             </div>
                         </div>
                     </div>

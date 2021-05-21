@@ -221,6 +221,8 @@ new Vue({
   template: "<AppLoadingState/>"
 });
 
+
+
 /// Use Vuex with another example 2
 import AppVuex2 from "./components/truyen_du_lieu/vuex_2/App";
 import storeAppVuex2 from "./components/truyen_du_lieu/vuex_2/stores/store";
@@ -232,6 +234,20 @@ new Vue({
   el: "#app_vuex_2",
   components: { AppVuex2 },
   template: "<AppVuex2/>"
+});
+
+
+/// App Todo Vuex_3
+import AppTodoVuex3 from "./components/truyen_du_lieu/vuex_3_todo/App.vue";
+import storeAppTodoVuex3 from './components/truyen_du_lieu/vuex_3_todo/store/index';
+
+Vue.config.productionTip = false;
+
+new Vue({
+  store: storeAppTodoVuex3,
+  el: "#app_todo_vuex_3",
+  components: { AppTodoVuex3 },
+  template: "<AppTodoVuex3/>"
 });
 
 
@@ -311,3 +327,65 @@ new Vue({
   router: routerLemonnadeStand,
   store: storeLemonnadeStand
 }).$mount("#app_lemonade_stand");
+
+
+/// Weather App
+import AppWeather from"./components/weather_app/App.vue";
+
+Vue.config.productionTip = false;
+
+new Vue({
+  el: "#app_weather",
+  components: { AppWeather },
+  template: "<AppWeather/>"
+});
+
+
+
+/// Show weather app 
+import AppShowModal from './components/show_modal/App.vue';
+
+Vue.config.productionTip = false;
+
+new Vue({
+  el: "#app_show_modal",
+  components: { AppShowModal },
+  template: "<AppShowModal/>"
+});
+
+
+
+/// GAME memory fruit app
+import AppMemoryGame from "./games/memory_fruit/App.vue";
+
+Vue.config.productionTip = false;
+
+new Vue({
+  el: "#app_memory_fruit",
+  components: { AppMemoryGame },
+  template: "<AppMemoryGame/>"
+});
+
+
+
+/// App Auto Loan Calculator
+import AppLoanCalculator from "./components/auto_loan_calculator/App.vue";
+
+Vue.config.productionTip = false;
+
+new Vue({
+  el: "#app_auto_loan_calculator",
+  components: { AppLoanCalculator },
+  template: "<AppLoanCalculator/>"
+});
+
+
+
+/// App Animation 
+import AppAnimation from "./components/animations/App.vue";
+
+new Vue({
+  el: "#app_animation",
+  components: { AppAnimation },
+  template: "<AppAnimation/>"
+})
