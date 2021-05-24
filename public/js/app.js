@@ -2674,6 +2674,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2739,6 +2740,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         "config": config,
         "data": data
       });
+    },
+    deleteImage: function deleteImage(id) {
+      this.$store.dispatch("handleDeleteImage", id);
+      console.log("id: " + id);
     }
   })
 });
@@ -10949,7 +10954,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\nbody[data-v-69a5ffd4] {\n  font-family: \"Franklin Gothic Medium\", \"Arial Narrow\", Arial, sans-serif;\n  line-height: 1.6;\n  background: #e8f7f0;\n}\n.container[data-v-69a5ffd4] {\n  max-width: 1100px;\n  margin: auto;\n  overflow: auto;\n  padding: 0 2rem;\n}\n", ""]);
+exports.push([module.i, "\nbody[data-v-69a5ffd4] {\r\n  font-family: \"Franklin Gothic Medium\", \"Arial Narrow\", Arial, sans-serif;\r\n  line-height: 1.6;\r\n  background: #e8f7f0;\n}\n.container[data-v-69a5ffd4] {\r\n  max-width: 1100px;\r\n  margin: auto;\r\n  overflow: auto;\r\n  padding: 0 2rem;\n}\r\n", ""]);
 
 // exports
 
@@ -10968,7 +10973,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\nform[data-v-7b6248eb] {\n  display: flex;\n}\ninput[type=\"text\"][data-v-7b6248eb] {\n  flex: 10;\n  padding: 10px;\n  border: 1px solid #41b883;\n  outline: 0;\n}\ninput[type=\"submit\"][data-v-7b6248eb] {\n  flex: 2;\n  background: #41b883;\n  color: #fff;\n  border: 1px #41b883 solid;\n  cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\nform[data-v-7b6248eb] {\r\n  display: flex;\n}\ninput[type=\"text\"][data-v-7b6248eb] {\r\n  flex: 10;\r\n  padding: 10px;\r\n  border: 1px solid #41b883;\r\n  outline: 0;\n}\ninput[type=\"submit\"][data-v-7b6248eb] {\r\n  flex: 2;\r\n  background: #41b883;\r\n  color: #fff;\r\n  border: 1px #41b883 solid;\r\n  cursor: pointer;\n}\r\n", ""]);
 
 // exports
 
@@ -10987,7 +10992,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\nselect[data-v-19515fb9] {\n  margin-top: 20px;\n  padding: 6px;\n  border: #41b883 1px solid;\n}\n", ""]);
+exports.push([module.i, "\nselect[data-v-19515fb9] {\r\n  margin-top: 20px;\r\n  padding: 6px;\r\n  border: #41b883 1px solid;\n}\r\n", ""]);
 
 // exports
 
@@ -11006,7 +11011,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n.todos[data-v-6c71e55e] {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  grid-gap: 1rem;\n}\n.todo[data-v-6c71e55e] {\n  border: 1px solid #ccc;\n  background: #41b883;\n  padding: 1rem;\n  border-radius: 5px;\n  text-align: center;\n  position: relative;\n  cursor: pointer;\n}\ni[data-v-6c71e55e] {\n  position: absolute;\n  bottom: 10px;\n  right: 10px;\n  color: #fff;\n  cursor: pointer;\n}\n.legend[data-v-6c71e55e] {\n  display: flex;\n  justify-content: space-around;\n  margin-bottom: 1rem;\n}\n.complete-box[data-v-6c71e55e] {\n  display: inline-block;\n  width: 10px;\n  height: 10px;\n  background: #35495e;\n}\n.incomplete-box[data-v-6c71e55e] {\n  display: inline-block;\n  width: 10px;\n  height: 10px;\n  background: #41b883;\n}\n.is-complete[data-v-6c71e55e] {\n  background: #35495e;\n  color: #fff;\n}\n@media (max-width: 500px) {\n.todos[data-v-6c71e55e] {\n    grid-template-columns: 1fr;\n}\n}\n", ""]);
+exports.push([module.i, "\n.todos[data-v-6c71e55e] {\r\n  display: grid;\r\n  grid-template-columns: repeat(3, 1fr);\r\n  grid-gap: 1rem;\n}\n.todo[data-v-6c71e55e] {\r\n  border: 1px solid #ccc;\r\n  background: #41b883;\r\n  padding: 1rem;\r\n  border-radius: 5px;\r\n  text-align: center;\r\n  position: relative;\r\n  cursor: pointer;\n}\ni[data-v-6c71e55e] {\r\n  position: absolute;\r\n  bottom: 10px;\r\n  right: 10px;\r\n  color: #fff;\r\n  cursor: pointer;\n}\n.legend[data-v-6c71e55e] {\r\n  display: flex;\r\n  justify-content: space-around;\r\n  margin-bottom: 1rem;\n}\n.complete-box[data-v-6c71e55e] {\r\n  display: inline-block;\r\n  width: 10px;\r\n  height: 10px;\r\n  background: #35495e;\n}\n.incomplete-box[data-v-6c71e55e] {\r\n  display: inline-block;\r\n  width: 10px;\r\n  height: 10px;\r\n  background: #41b883;\n}\n.is-complete[data-v-6c71e55e] {\r\n  background: #35495e;\r\n  color: #fff;\n}\n@media (max-width: 500px) {\n.todos[data-v-6c71e55e] {\r\n    grid-template-columns: 1fr;\n}\n}\r\n", ""]);
 
 // exports
 
@@ -46492,6 +46497,18 @@ var render = function() {
                   attrs: { src: image.path, alt: "" }
                 }),
                 _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    on: {
+                      click: function($event) {
+                        return _vm.deleteImage(image.id)
+                      }
+                    }
+                  },
+                  [_vm._v("Delete")]
+                ),
+                _vm._v(" "),
                 _c("hr")
               ])
             ])
@@ -70059,6 +70076,11 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
     newImage: function newImage(state, image) {
       //state.listImages.unshift(image); // thêm lên trên
       state.listImages.unshift(image);
+    },
+    removeImage: function removeImage(state, id) {
+      state.listImages = state.listImages.filter(function (image) {
+        return image.id !== id;
+      });
     }
   },
   actions: {
@@ -70085,16 +70107,37 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
         }, _callee);
       }))();
     },
-    handleAddImage: function handleAddImage(context, dataForm) {
+    handleDeleteImage: function handleDeleteImage(context, id) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var data, config, imageData;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
+                console.log("delete");
+                _context2.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/delete_image/".concat(id)).then(function (res) {
+                  console.log(res.data.message);
+                  context.commit('removeImage', id);
+                })["catch"](function (err) {});
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    handleAddImage: function handleAddImage(context, dataForm) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var data, config, imageData;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
                 data = dataForm.data;
                 config = dataForm.config;
-                _context2.next = 4;
+                _context3.next = 4;
                 return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post("/upload", data, config).then(function (res) {
                   // controller sẽ trả về response có một tham số
                   // "image" có giá trị của image mới thêm vào CSDL
@@ -70107,10 +70150,10 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
 
               case 4:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2);
+        }, _callee3);
       }))();
     }
   }
@@ -75300,8 +75343,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp72\htdocs\VueLaravel_SumItUp\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp72\htdocs\VueLaravel_SumItUp\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp7.4.16\htdocs\VueJsSumItUp\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp7.4.16\htdocs\VueJsSumItUp\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

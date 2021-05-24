@@ -45,4 +45,18 @@ class FileController extends Controller
             return response()->json(['message'=> "Failed"]);
          }
     }
+
+    public function delete($id) {
+
+        $image = FileUpload::find($id);
+
+        return response()->json(['message'=> "Delete Image Successfull"]);
+
+        unlink("uploads/".$image->name);
+
+        FileUpload::where("id", $image->id)->delete();
+
+        return response()->json(['message'=> "Delete Image Successfull"]);
+
+    }
 }

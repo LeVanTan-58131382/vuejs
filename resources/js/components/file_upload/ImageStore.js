@@ -20,7 +20,11 @@ export default new Vuex.Store({
         newImage: (state, image) => {
             //state.listImages.unshift(image); // thêm lên trên
             state.listImages.unshift(image);
-        }, 
+        },
+
+        removeImage: (state, id) => {
+            state.listImages = state.listImages.filter(image => image.id !== id);
+        }
 
     },
     actions: {
@@ -31,6 +35,19 @@ export default new Vuex.Store({
             console.log("images store: " + response.data);
 
             context.commit('setListImages', response.data);
+        },
+
+        async handleDeleteImage(context, id){
+            console.log("delete");
+            await axios.get(`/delete_image/${id}`)
+                    .then(function(res){
+
+                        console.log(res.data.message);
+
+                        context.commit('removeImage', id);
+                    })
+                    .catch(function(err) {
+                    });
         },
 
         async handleAddImage(context, dataForm){

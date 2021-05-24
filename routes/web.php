@@ -27,3 +27,8 @@ Route::post('/upload', [FileController::class, 'upload'])->name('upload');
 
 Route::get('/list_image', [FileController::class, 'index'])->name('images');
 
+// Route::get('/delete_image/{$id}', [FileController::class, 'delete'])->name('delete');
+
+Route::get('/delete_image/{$id}', function(){
+    dd(1);
+})->name('delete');

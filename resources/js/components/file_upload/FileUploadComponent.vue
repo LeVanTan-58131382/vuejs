@@ -30,6 +30,7 @@
                             alt=""
                             style="width:100px; height: 100px;"
                         />
+                        <button @click="deleteImage(image.id)">Delete</button>
                         <hr />
                     </li>
                 </ul>
@@ -124,6 +125,11 @@ export default {
             data.append("file", this.file);
 
             this.$store.dispatch("handleAddImage", {"config": config, "data": data});
+        },
+
+        deleteImage(id){
+            this.$store.dispatch("handleDeleteImage", id);
+            console.log("id: " + id);
         }
     }
 };
