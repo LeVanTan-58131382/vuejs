@@ -389,3 +389,16 @@ new Vue({
   components: { AppAnimation },
   template: "<AppAnimation/>"
 })
+
+
+/// App Upload File
+
+import AppImageUpload from "./components/file_upload/FileUploadComponent.vue";
+import ImageStore from "./components/file_upload/ImageStore.js";
+
+new Vue({
+  el: "#app_image_upload",
+  store: ImageStore,
+  components: { AppImageUpload },
+  template: "<AppImageUpload/>"
+})

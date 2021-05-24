@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\FileController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +22,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/upload', [FileController::class, 'upload'])->name('upload');
+
+Route::get('/list_image', [FileController::class, 'index'])->name('images');
+

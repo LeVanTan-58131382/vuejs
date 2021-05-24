@@ -219,6 +219,14 @@
                             <div id="app_animation">
                             </div>
                         </div>
+
+                        <div class="col-md-12 block-component" style="min-height: 500px">
+                            <label for="" class="control-label">App File Upload</label>
+                            <div id="app_image_upload">
+                            </div>
+                        </div>
+
+                        
                     </div>
                 </div>
             </div>
