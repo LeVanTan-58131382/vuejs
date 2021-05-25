@@ -5,18 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\FileUpload;
 
+use File;
+
+use Illuminate\Support\Facades\Validator;
+
 class FileController extends Controller
 {
     //
     public function index()
     {
-        $images = FileUpload::all();
+        $files = FileUpload::all();
         
-        return response()->json($images);
+        return response()->json($files);
     }
 
     public function upload(Request $request)
     {
+
         $request->validate([
             'file' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
          ]);
@@ -30,19 +35,36 @@ class FileController extends Controller
     
                 $fileUpload->move(public_path() . "/uploads", $request->file->getClientOriginalName());
             
-                // Lưu vào store dùng storeAs()
-                // $file_name = time().'_'.$request->file->getClientOriginalName();
-                // $file_path = $request->file('file')->storeAs('uploads', $file_name, 'public');
-
-                $fileUploadTable->name = time().'_'.$request->file->getClientOriginalName();
+                $fileUploadTable->name = $request->file->getClientOriginalName();
                 $fileUploadTable->path = "/uploads/" . $request->file->getClientOriginalName();
                 $fileUploadTable->save();
     
-                return response()->json(['message'=>'File uploaded successfully.', "image"=>$fileUploadTable], 200);
+                return response()->json(['message'=>'File Uploaded Successfully.', "file"=>$fileUploadTable]);
             }
          } catch (\Exception $e) {
-            // return response()->json(['message'=> e.getMessage()]);
-            return response()->json(['message'=> "Failed"]);
+            
+            return response()->json(['message'=> "Upload Failed"]);
          }
+    }
+
+    public function deleteFile($id) {
+
+        $file = FileUpload::find($id);
+
+        $fileForResponse = FileUpload::find($id);
+
+        if(file_exists(public_path() . $file->path)){
+
+            File::delete(public_path() . $file->path);
+            FileUpload::where("id", $file->id)->delete();
+
+            // xóa lun những record có tên file trùng với tên file được yêu cầu xóa
+            FileUpload::where("name", $file->name)->delete();
+
+            return response()->json(['message'=> "Delete File Successfull", "file"=>$fileForResponse]);
+        }
+
+        return response()->json(['message'=> "Delete File Failed", "file"=>$fileForResponse]);
+
     }
 }

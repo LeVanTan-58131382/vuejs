@@ -4,35 +4,42 @@
         <div class="card-header">Laravel Vue JS File Upload Demo</div>
 
         <div class="card-body">
-            <div v-if="message != ''" class="alert alert-success">
-                {{ message }}
-            </div>
+            <transition name="fade">
+                <div v-if="messageComputed != ''" class="alert alert-success">
+                    {{ messageComputed }}
+                </div>
+            </transition>
 
-            <form @submit="addImage" enctype="multipart/form-data">
+            <form @submit="addFile" enctype="multipart/form-data">
                 <input
+                    ref="myFileInput"
                     type="file"
                     multiple="multiple"
                     class="form-control"
                     v-on:change="onChange"
                 />
-                <button class="btn btn-primary btn-block">Upload</button>
+                <br>
+                <button class="btn btn-primary">Upload</button>
             </form>
 
             <br />
             <br />
 
             <div>
-                <ul v-for="image in listProduct" :key="image.name">
-                    <li>
-                        <p>{{ image.name }}</p>
-                        <img
-                            :src="image.path"
-                            alt=""
-                            style="width:100px; height: 100px;"
-                        />
-                        <hr />
-                    </li>
-                </ul>
+                <transition-group name="slide-fade" tag="div">
+                    <div v-for="file in listFilesComputed" :key="file.id">
+                        <div class="item-file">
+                            <p>{{ file.name }}</p>
+                            <img
+                                :src="file.path"
+                                alt=""
+                                style="width:180px; height: 180px; border-radius: 5px"
+                            />
+                            <button class="btn btn-warning" @click="deleteFile(file.id)">Delete</button>
+                            <hr/>
+                        </div>
+                    </div>
+                </transition-group>
             </div>
         </div>
     </div>
@@ -48,25 +55,27 @@ export default {
         return {
             name: "",
             file: "",
-            message: "",
         };
     },
 
     computed:{
-        listProduct(){
-            return this.$store.state.listImages;
+        listFilesComputed(){
+            return this.$store.state.listFiles;
         },
 
-        ...mapGetters(["getListImages"]),
+        messageComputed(){
+            return this.$store.state.message;
+        },
+
+        ...mapGetters(["getListFiles", "getMessage"]),
     },
     created() {
-        this.getListImage();
+        this.getListFile();
     },
-
 
     methods: {
 
-        ...mapActions(["getListImages"]),
+        ...mapActions(["getListFiles"]),
 
         onChange(e) {
             this.file = e.target.files[0];
@@ -94,23 +103,11 @@ export default {
                 });
         },
 
-        // getListImage() {
-        //     axios
-        //         .get("/list_image")
-        //         .then(response => {
-        //             this.images = response.data;
-        //         })
-        //         .catch(error => {
-        //             // handle error
-        //             console.log(error);
-        //         });
-        // }
-
-        getListImage(){
-            this.$store.dispatch("handleGetListImages");
+        getListFile(){
+            this.$store.dispatch("handleGetListFiles");
         },
 
-        addImage(e){
+        addFile(e){
             e.preventDefault();
             let existingObj = this;
 
@@ -120,11 +117,65 @@ export default {
                 }
             };
 
+            // kiểm tra định dạng nếu cần
+            // nếu muốn chỉ nhận ảnh
+            let checkTyprFile = this.file.type.slice(-4);
+
+            if(!checkTyprFile.includes("jpg") && !checkTyprFile.includes("jpeg") && !checkTyprFile.includes("png"))
+            { 
+                let messageAlert = 'Please upload files in the following formats: .jpeg, .jpg, .png ';
+                
+                this.$store.dispatch("handleSetMessage", messageAlert);
+
+                this.reset();
+
+                return;
+            }
+            // kết thúc kiểm tra định dạng
+
             let data = new FormData();
             data.append("file", this.file);
 
-            this.$store.dispatch("handleAddImage", {"config": config, "data": data});
+            this.$store.dispatch("handleAddFile", {"config": config, "data": data});
+            this.reset();
+        },
+
+        deleteFile(id){
+            this.$store.dispatch("handleDeleteFile", id);
+        },
+
+        reset() {
+            this.$refs.myFileInput.value = "";
         }
     }
 };
 </script>
+
+<style lang="scss" scoped>
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+// ------ THÊM VÀO ĐOẠN BÊN DƯỚI
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
+.item-file{
+    margin: 5px;
+    padding: 3px;
+    float: left;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+</style>

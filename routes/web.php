@@ -25,5 +25,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/upload', [FileController::class, 'upload'])->name('upload');
 
-Route::get('/list_image', [FileController::class, 'index'])->name('images');
+Route::get('/list_file', [FileController::class, 'index'])->name('files');
 
+Route::delete('/delete_file/{id}', [FileController::class, 'deleteFile'])->name('deleteImage');

@@ -6,56 +6,106 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        listImages: [],
+        listFiles: [],
+        message: "",
     },
 
     getters: {
-        getListImages: state => state.listImages,
+        getListFiles: state => state.listFiles,
+
+        getMessage: state => state.message,
     },
 
     mutations: {
 
-        setListImages: (state, images) => (state.listImages = images),
+        setListFiles: (state, files) => (state.listFiles = files),
 
-        newImage: (state, image) => {
-            //state.listImages.unshift(image); // thêm lên trên
-            state.listImages.unshift(image);
-        }, 
+        setMessage: (state, message) => {
+            
+            state.message = message; // chạy xong câu lệnh này, 2 giây sau sẽ chạy câu lệnh phía dưới
+
+            setTimeout(function(){
+                state.message = ""; // nhằm tắt thông báo đi
+            }, 2000);
+        },
+
+        newFile: (state, file) => {
+            //state.listFiles.unshift(File); // thêm lên trên
+            state.listFiles.push(file);
+        },
+
+        removeFile: (state, fileData) => {
+
+            //console.log(fileData);
+
+            state.listFiles = state.listFiles.filter(file => file.id !== fileData.id);
+
+
+            // trên màn hình xáo lun các ảnh có cùng tên với ảnh đã được xóa, dù csdl đã
+            // được xóa tuy nhiên để giao diện logic thì nên xóa trên giao diện lun
+
+
+            state.listFiles = state.listFiles.filter(file => file.name !== fileData.name);
+        }
 
     },
     actions: {
 
-        async handleGetListImages(context){
-            const response = await axios.get("/list_image");
-
-            console.log("images store: " + response.data);
-
-            context.commit('setListImages', response.data);
+        async handleSetMessage(context, message){
+            context.commit('setMessage', message);
         },
 
-        async handleAddImage(context, dataForm){
+        async handleGetListFiles(context){
+            const response = await axios.get("/list_file");
+
+            //console.log("Files store: " + response.data);
+
+            context.commit('setListFiles', response.data);
+        },
+
+        async handleAddFile(context, dataForm){
+            
             const data = dataForm.data;
             const config = dataForm.config;
 
-            var imageData;
+            var fileData;
 
             await axios
                 .post("/upload", data, config)
                 .then(function(res) {
                     // controller sẽ trả về response có một tham số
-                    // "image" có giá trị của image mới thêm vào CSDL
+                    // "File" có giá trị của File mới thêm vào CSDL
 
-                    // lấy dữ liệu này để thêm vào danh sách image
-                    // listImages mà store đang quản lý
-                    imageData = res.data.image;
+                    // lấy dữ liệu này để thêm vào danh sách File
+                    // listFiles mà store đang quản lý
+                    fileData = res.data.file;
 
-                    console.log(imageData);
+                    //console.log(FileData);
+                    //console.log(res.data.message);
 
-                    context.commit('newImage', imageData);
+                    context.commit('newFile', fileData);
+
+                    context.commit('setMessage', res.data.message);
                 })
                 .catch(function(err) {
                 });
-        }
+        },
+
+        async handleDeleteFile(context, id){
+            //console.log("delete");
+            await axios.delete(`/delete_file/${id}`)
+                    .then(function(res){
+
+                        //console.log(res.data.message);
+                        let fileData = res.data.file;
+                        //console.log("data file: " + fileData);
+
+                        context.commit('removeFile', fileData);
+                        context.commit('setMessage', res.data.message);
+                    })
+                    .catch(function(err) {
+                    });
+        },
     }
 }
 );
