@@ -99,9 +99,10 @@ export default new Vuex.Store({
                         //console.log(res.data.message);
                         let fileData = res.data.file;
                         //console.log("data file: " + fileData);
-
-                        context.commit('removeFile', fileData);
+                        
                         context.commit('setMessage', res.data.message);
+                        context.commit('removeFile', fileData);
+                        
                     })
                     .catch(function(err) {
                     });

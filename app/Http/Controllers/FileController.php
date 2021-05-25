@@ -51,6 +51,12 @@ class FileController extends Controller
 
         $file = FileUpload::find($id);
 
+        // trường hợp người dùng mở 2 tab và xóa file bên tab 2, sau đó về tab 1 xóa lại 
+        // file đó
+        if($file == null){
+            return response()->json(['message'=> "Please reload the page"]);
+        }
+
         $fileForResponse = FileUpload::find($id);
 
         if(file_exists(public_path() . $file->path)){

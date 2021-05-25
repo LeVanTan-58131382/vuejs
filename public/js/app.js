@@ -70285,8 +70285,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
                   var fileData = res.data.file; //console.log("data file: " + fileData);
 
                   //console.log("data file: " + fileData);
-                  context.commit('removeFile', fileData);
                   context.commit('setMessage', res.data.message);
+                  context.commit('removeFile', fileData);
                 })["catch"](function (err) {});
 
               case 2:
